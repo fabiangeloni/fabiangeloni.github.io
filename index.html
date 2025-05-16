@@ -1,0 +1,108 @@
+<html>
+    <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Sitio Web</title>
+            <meta name="description" content="Sitio web para pruebas de herramientas">
+            <meta name="keywords" content="key1, key2, key3">
+            <meta name="author" content="Fabian Angeloni">
+            <link rel="stylesheet" type="text/css" href="css/estilo.css">
+            <link rel="icon" href="favicon.ico" type="image/x-icon">  
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">      
+    </head>
+
+    <body>
+            <header>
+                <h1>Hola mundo</h1>
+                <div class="content3">
+                    <div class="contenthero">
+                    <div class="textotipo-hero"> <p>Diseño y cartelería que hacen visible tu marca.</p></div>
+                    <div class="textotipo-hero2"><p>Elaboramos carteles y piezas gráficas que atraen, comunican y venden.</p></div>
+                    
+                    </div><button class="boton-hero">Conocé más</button><br><br><br>
+                </div>
+            </header>
+            <main>
+                <div class="content1">
+
+
+
+                    <div class="slider-container">
+                        <div class="slider-track" id="sliderTrack">
+                          <div class="slide"><div class="slide-content">Slide 1</div></div>
+                          <div class="slide"><div class="slide-content">Slide 2</div></div>
+                          <div class="slide"><div class="slide-content">Slide 3</div></div>
+                          <div class="slide"><div class="slide-content">Slide 4</div></div>
+                          <div class="slide"><div class="slide-content">Slide 5</div></div>
+                          <div class="slide"><div class="slide-content">Slide 6</div></div>
+                        </div>
+                      
+                        <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+                        <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+                      </div>
+                      
+                      <script>
+                        const track = document.getElementById('sliderTrack');
+                        const totalSlides = 6;
+                        const visibleSlides = 3;
+                        const slideWidth = 100 / visibleSlides;
+                        let currentIndex = 0;
+                        let autoSlideInterval;
+                      
+                        function updateSlider() {
+                          const offset = -(currentIndex * slideWidth);
+                          track.style.transform = `translateX(${offset}%)`;
+                        }
+                      
+                        function nextSlide() {
+                          currentIndex = (currentIndex + 1) % (totalSlides - visibleSlides + 1);
+                          updateSlider();
+                          resetAutoSlide();
+                        }
+                      
+                        function prevSlide() {
+                          currentIndex = (currentIndex - 1 + (totalSlides - visibleSlides + 1)) % (totalSlides - visibleSlides + 1);
+                          updateSlider();
+                          resetAutoSlide();
+                        }
+                      
+                        function startAutoSlide() {
+                          autoSlideInterval = setInterval(() => {
+                            nextSlide();
+                          }, 4000);
+                        }
+                      
+                        function resetAutoSlide() {
+                          clearInterval(autoSlideInterval);
+                          startAutoSlide();
+                        }
+                      
+                        // Inicializar
+                        updateSlider();
+                        startAutoSlide();
+                      </script>
+                    
+                    <div class="a33" >
+                <span class="textotipo1"><p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p></div>
+                    <div class="a33" ><p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p></div>
+                    <div class="a33" ><p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p>
+                    <p>hola mundo</p><p>este es es cuerpo de la web</p></div></span>
+                </div>
+
+            </main>
+            <footer>
+                <div class="content2">
+                    <span class="textotipo2"><p>hola mundo</p><p>este es el pie de la web</p></span>
+                    </div>
+    
+            </footer>
+    </body>
+</html>
