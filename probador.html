@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Editor HTML y CSS</title>
+
+</head>
+<body>
+    <header><h1>CREADOR DE DIVS</h1><H4>Diseño Web - Fabián Angeloni</H4></header>
+<div class="contenedor">
+  
+  <textarea id="html" placeholder="Escribí tu DIV en HTML aquí..."></textarea>
+
+
+ 
+  <textarea id="css" placeholder="Escribí tu CSS aquí..."></textarea>
+
+  <button onclick="probar()">Probar</button>
+</div>
+ <div class="contenedor">
+    <label>Resultado:</label>
+  
+  <iframe id="resultado"></iframe>
+  </div>
+  <script>
+    function probar() {
+      const html = document.getElementById("html").value;
+      const css = document.getElementById("css").value;
+      const resultado = document.getElementById("resultado");
+
+      const contenido = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <style>${css}</style>
+        </head>
+        <body>
+          ${html}
+        </body>
+        </html>
+      `;
+
+      resultado.srcdoc = contenido;
+    }
+  </script>
+
+</body>
+</html>
