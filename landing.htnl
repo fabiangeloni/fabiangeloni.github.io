@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microemprendedores Colón - Landing Page Rediseñada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables y Reset Básico */
+        :root {
+            --color-primary: #1e40af; /* Azul oscuro */
+            --color-secondary: #fcd34d; /* Amarillo/Dorado */
+            --color-text: #333;
+            --color-bg-light: #f9fafb; /* Gris muy claro */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: var(--color-text);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        /* 1. Estilo Hero */
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content {
+            padding: 0 2rem;
+            max-width: 600px;
+            z-index: 10;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Overlay oscuro para legibilidad */
+        }
+
+        /* 2. Horizontal Scroll y Cards */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto; /* Permite el scroll horizontal */
+            gap: 1.5rem; /* Espacio entre tarjetas */
+            padding-bottom: 1rem; /* Espacio para la barra de scroll */
+            /* Ocultar barra de desplazamiento */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .card {
+            flex-shrink: 0; /* Evita que las tarjetas se encojan */
+            width: 280px; /* Ancho fijo para cada tarjeta */
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .card-category {
+            font-size: 0.8rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .card-btn {
+            display: block;
+            width: 100%;
+            margin-top: auto; /* Empuja el botón hacia abajo */
+            padding: 0.5rem;
+            background-color: var(--color-primary);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        
+        /* 3. Separator / CTA Banner */
+        .separator-banner {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 4rem 0;
+        }
+        
+        /* 4. Final CTA */
+        .final-cta {
+            background-color: var(--color-primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 0.75rem;
+            margin-bottom: 4rem;
+        }
+        .final-cta h3 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .cta-btn-secondary {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: opacity 0.2s;
+        }
+    </style>
+</head>
+<body>
+
+    <header style="background-color: white; border-bottom: 1px solid #eee; padding: 1rem 0;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">Microemprendedores Colón</div>
+            <nav style="display: flex; gap: 1rem;">
+                <a href="#" class="cta-btn-secondary" style="padding: 0.5rem 1rem; font-size: 1rem;">Registrate</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" style="background-image: url('https://picsum.photos/id/164/1200/600');">
+            <div class="container hero-content">
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700;">El Talento Emprendedor de Colón en un Solo Lugar</h1>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Descubre y apoya a los negocios locales. Juntos hacemos crecer la economía de nuestra ciudad.</p>
+                <a href="#" class="cta-btn-secondary" style="font-size: 1.5rem;">Explorar Emprendimientos</a>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background-color: var(--color-bg-light);">
+            <div class="container">
+                <h2>🌟 Los 10 Emprendimientos que Marcan Tendencia.</h2>
+                <div class="horizontal-scroll">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado1/300/200" alt="Emprendimiento 1" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">GASTRONOMÍA</span>
+                            <h3 class="card-title">La Hora del Mate</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Repostería y panadería artesanal con envío gratuito.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado2/300/200" alt="Emprendimiento 2" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">SERVICIOS</span>
+                            <h3 class="card-title">SL Marketing</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Community Manager con enfoque estratégico.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <img src="https://picsum.photos/seed/destacado3/300/200" alt="Emprendimiento 3" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">ARTESANÍAS</span>
+                            <h3 class="card-title">Arroz con leche</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Juguetes de madera hechos a mano y personalizados.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado4/300/200" alt="Emprendimiento 4" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">COMERCIANTES</span>
+                            <h3 class="card-title">Marla Aromas</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Sahumerios, aromas y decoración sensorial.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado5/300/200" alt="Emprendimiento 5" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">INDUMENTARIA</span>
+                            <h3 class="card-title">Atelier Carmesí</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Vestidos únicos a medida para bodas y eventos.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado6/300/200" alt="Emprendimiento 6" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">GASTRONOMÍA</span>
+                            <h3 class="card-title">Pizza Planet</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Pizzas y empanadas caseras con delivery.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado7/300/200" alt="Emprendimiento 7" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">COMERCIANTES</span>
+                            <h3 class="card-title">AGUSBAGUES</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Belleza, bienestar y cosmética natural.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado8/300/200" alt="Emprendimiento 8" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">SERVICIOS</span>
+                            <h3 class="card-title">ALARMAS VIVIR MEJOR</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Alarmas X-28 con instalación y monitoreo 24hs.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado9/300/200" alt="Emprendimiento 9" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">ARTESANÍAS</span>
+                            <h3 class="card-title">Mundo Resina</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Llaveros y objetos en resina epoxi personalizados.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/destacado10/300/200" alt="Emprendimiento 10" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category">INDUMENTARIA</span>
+                            <h3 class="card-title">MIKA INDUMENTARIA</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Lencería artesanal y accesorios infantiles.</p>
+                            <a href="#" class="card-btn">Ver Más</a>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section class="separator-banner">
+            <div class="container">
+                📣 "Mi negocio creció un 30% gracias a esta plataforma." - *Emprendedor Satisfecho*
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <h2 style="color: #ef4444;">🍽️ Sabores de Colón: Del Horno a tu Mesa.</h2>
+                <div class="horizontal-scroll">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro1/300/200" alt="Emprendimiento G1" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">REPOSTERÍA</span>
+                            <h3 class="card-title">Dulce Loly</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Tortas decoradas y mesas dulces artesanales.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro2/300/200" alt="Emprendimiento G2" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">PIZZERÍA</span>
+                            <h3 class="card-title">El Carrito de la Plaza</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Comida rápida con sabor casero.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <img src="https://picsum.photos/seed/gastro3/300/200" alt="Emprendimiento G3" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">NATURAL</span>
+                            <h3 class="card-title">Zanito</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Huevos libres, yerba orgánica y miel pura.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro4/300/200" alt="Emprendimiento G4" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">PASTELERÍA</span>
+                            <h3 class="card-title">Sabores De Yor</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Alfajores y budines con sabor casero.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro5/300/200" alt="Emprendimiento G5" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">EVENTOS</span>
+                            <h3 class="card-title">Dulce Aventura</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Carrito golosinero para cumpleaños.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro6/300/200" alt="Emprendimiento G6" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">MASAS</span>
+                            <h3 class="card-title">Débora Empanadas</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Empanadas criollas caseras.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro7/300/200" alt="Emprendimiento G7" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">SALUDABLE</span>
+                            <h3 class="card-title">MAVIGI</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Productos caseros y saludables.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro8/300/200" alt="Emprendimiento G8" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">POSTRES</span>
+                            <h3 class="card-title">Dulce Josefina</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Tortas y mesas dulces personalizadas.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro9/300/200" alt="Emprendimiento G9" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">TORTAS</span>
+                            <h3 class="card-title">KABUKI</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Pastelería casera para cualquier ocasión.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/gastro10/300/200" alt="Emprendimiento G10" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #ef4444;">CASERO</span>
+                            <h3 class="card-title">Amor Dulce</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Repostería casera y tartas artesanales.</p>
+                            <a href="#" class="card-btn" style="background-color: #ef4444;">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background-color: var(--color-bg-light);">
+            <div class="container">
+                <h2 style="color: #9d174d;">🎨 Hecho a Mano y con el Alma: Diseño y Arte Local.</h2>
+                <div class="horizontal-scroll">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte1/300/200" alt="Emprendimiento A1" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">DECORACIÓN</span>
+                            <h3 class="card-title">Correcto Colifato</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Decoración en hierro y chapa calada.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte2/300/200" alt="Emprendimiento A2" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">INDUMENTARIA</span>
+                            <h3 class="card-title">Carrusel Indumentaria</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Ropa femenina en todos los talles.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte3/300/200" alt="Emprendimiento A3" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">PAPELEÍA</span>
+                            <h3 class="card-title">CATIK-DECO</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Papelería creativa personalizada.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte4/300/200" alt="Emprendimiento A4" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">ACCESORIOS</span>
+                            <h3 class="card-title">Luna Azul Accesorios</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Accesorios artesanales en macramé.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte5/300/200" alt="Emprendimiento A5" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">DECORACIÓN</span>
+                            <h3 class="card-title">A las Chapas</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Chapas decorativas artesanales.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte6/300/200" alt="Emprendimiento A6" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">CERÁMICA</span>
+                            <h3 class="card-title">MAMBA</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Accesorios en cerámica artesanal.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte7/300/200" alt="Emprendimiento A7" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">DISEÑO TEXTIL</span>
+                            <h3 class="card-title">Marina Rodríguez</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Accesorios artesanales: morrales y más.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte8/300/200" alt="Emprendimiento A8" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">ARTE</span>
+                            <h3 class="card-title">ARTE BEERSEBA</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Arte, restauración, murales y decoración.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte9/300/200" alt="Emprendimiento A9" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">AMIGURUMIS</span>
+                            <h3 class="card-title">Nayu Amigurumis</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Muñecos tejidos a crochet.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/arte10/300/200" alt="Emprendimiento A10" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #9d174d;">ACCESORIOS</span>
+                            <h3 class="card-title">BRU CREACIONES</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Bolsos, mochilas y accesorios artesanales.</p>
+                            <a href="#" class="card-btn" style="background-color: #9d174d;">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="separator-banner" style="background-color: #38a169; color: white;">
+            <div class="container">
+                ✅ **¡Ya somos más de 50 negocios!** Encuentra la solución que necesitas en Colón.
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <h2 style="color: #059669;">🛠️ Soluciones y Tiendas Amigas: Servicios y Comercios.</h2>
+                <div class="horizontal-scroll">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi1/300/200" alt="Emprendimiento S1" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">SERVICIOS</span>
+                            <h3 class="card-title">AGUSTIN SALAS</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Obras y reformas de gas y agua.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi2/300/200" alt="Emprendimiento S2" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">COMERCIANTES</span>
+                            <h3 class="card-title">PyC Polirrubros</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Productos de limpieza y papelería.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi3/300/200" alt="Emprendimiento S3" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">SERVICIOS</span>
+                            <h3 class="card-title">Viajes y Mini Fletes 24 hs</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Fletes y auxilios, urgencias 24 horas.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi4/300/200" alt="Emprendimiento S4" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">COMERCIANTES</span>
+                            <h3 class="card-title">ARABIAN PERFUMES</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Perfumes árabes importados.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi5/300/200" alt="Emprendimiento S5" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">SERVICIOS</span>
+                            <h3 class="card-title">FP Construcciones</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Remodelaciones, albañilería y electricidad.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi6/300/200" alt="Emprendimiento S6" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">COMERCIANTES</span>
+                            <h3 class="card-title">LACA</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Cuidado de la piel, make up y asesoramiento.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi7/300/200" alt="Emprendimiento S7" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">SERVICIOS</span>
+                            <h3 class="card-title">Mika Make Up</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Maquillaje profesional y diseño de cejas.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi8/300/200" alt="Emprendimiento S8" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">COMERCIANTES</span>
+                            <h3 class="card-title">SAKURA FRAGANCE</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Aromatizantes, difusores y sahumerios.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi9/300/200" alt="Emprendimiento S9" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">SERVICIOS</span>
+                            <h3 class="card-title">Tecnopisos</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Pisos spc y flotantes, revestimientos.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/servi10/300/200" alt="Emprendimiento S10" class="card-img">
+                        <div class="card-body">
+                            <span class="card-category" style="color: #059669;">COMERCIANTES</span>
+                            <h3 class="card-title">Taller Protegido Colón</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Productos de limpieza hechos con inclusión.</p>
+                            <a href="#" class="card-btn" style="background-color: #059669;">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="final-cta">
+                <h3>¿Tu Negocio no está aquí? ¡Súmate Ahora! 🚀</h3>
+                <p>Únete a la plataforma que conecta el talento emprendedor de Colón con miles de clientes. Es fácil y rápido.</p>
+                <a href="#" class="cta-btn-secondary">Registra tu Emprendimiento Gratis</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: #1f2937; color: #9ca3af; padding: 2rem 0; text-align: center; font-size: 0.9rem;">
+        © 2025 Microemprendedores Colón. Todos los derechos reservados. |
+        <a href="#" style="color: #9ca3af; text-decoration: none;">Términos y Condiciones</a>
+    </footer>
+
+</body>
+</html>
