@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senderos de Raza - Carnes Premium y Embutidos Artesanales</title>
+    
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --color-text: #333;
+            --color-bg: #fdfdfd;
+            --color-primary: #8B0000; /* Borgoña oscuro */
+            --color-secondary: #D4A76B; /* Dorado suave */
+            --color-dark: #1a1a1a;
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: auto; 
+        }
+
+        body {
+            font-family: var(--font-body);
+    color: var(--color-text);
+    background-image: url(https://senderosderaza.com.ar/img/fondo_categorias.jpeg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    background-attachment: auto;
+    background-size: cover;
+    background-position-y: -110px;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            
+        }
+
+        .footer_map{margin: 40px auto;}
+
+        /* --- Header y Navegación --- */
+        .header {
+          
+            width: 100%;
+            padding: 25px 0;
+            z-index: 100;
+            background: #000000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+       
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            display: block;
+            margin-top: 0px;
+            right: 0;
+            background: var(--color-secondary);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+            background: var(--color-secondary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+           position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    padding: 0 20px;
+    box-shadow: 0px 4px 16px #111111aa;
+        }
+
+        .hero::before {
+           content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(img/raza.png);
+    background-size: cover;
+    background-position-x: -60px;
+    filter: brightness(0.8) contrast(1.0);
+    transform: scale(1.1);
+    background-position-y: 25px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            text-align: left;
+            padding-left: 80px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            /* opacity: 0; <-- ERROR FATAL ELIMINADO */
+        }
+
+        .hero p {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+            /* opacity: 0; <-- ERROR FATAL ELIMINADO */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            /* opacity: 0; <-- ERROR FATAL ELIMINADO */
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-5px);
+            background-color: #A00000;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- Sección de Introducción/Valores --- */
+        .section {
+            padding: 120px 0;
+            overflow: hidden; 
+            
+        }
+        .section.dark {
+            background-color: var(--color-dark);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+        .section.dark .section-title {
+            color: white;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-family: var(--font-body);
+            font-size: 1.25rem;
+            color: #ffffff;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            font-weight: 500;
+        }
+        .section.dark .section-subtitle {
+            color: #ffffff;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            align-items: center;
+        }
+
+        
+        .intro-text h3 {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+        .section.dark .intro-text h3 {
+            color: white;
+        }
+        .intro-text p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-image-wrapper {
+            position: relative;
+            padding-bottom: 75%; /* Ratio 4:3 */
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            
+        }
+        .intro-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(0.2) brightness(1.05);
+            transition: filter 0.5s ease;
+        }
+        .intro-image-wrapper:hover img {
+            filter: grayscale(0) brightness(1.1);
+        }
+
+        /* --- Sección de Productos (Galería Dinámica) --- */
+        .products-section {
+            
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .product-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+           
+        }
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            padding-bottom: 75%; /* Ratio 4:3 */
+            overflow: hidden;
+        }
+        .product-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px 10px 0 0;
+            filter: saturate(1.1) contrast(1.1) brightness(1.05);
+            transition: transform 0.4s ease;
+        }
+        .product-item:hover .product-image-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 10px 25px 25px 25px;
+            text-align: center;
+        }
+        .product-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+        .product-info p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+        }
+        .product-button {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            padding: 10px 25px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .product-button:hover {
+            background-color: #e6c89c;
+        }
+
+        /* --- CTA Final --- */
+        .cta-final-section {
+            background-color:#8b0000ad;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-final-section h2 {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+        }
+
+        .cta-final-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            padding: 70px 0;
+            background-color: var(--color-dark);
+            color: #aaa;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .social-icons a {
+            color: #aaa;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            .hero p {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 3rem;
+            }
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 0;
+            }
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+            .nav-links {
+                display: none; 
+            }
+            .hero-content {
+                padding: 0px;
+            }
+            .hero{height: 40vh;}
+            .hero h1 {
+                font-size: 2.3rem;
+                margin-bottom: 15px;
+            }
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+            .cta-button {
+                padding: 15px 30px;
+            }
+            .section {
+                padding: 80px 0;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 50px;
+            }
+            .intro-grid {
+                padding: 0 10px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-info {
+                padding: 20px;
+            }
+            .cta-final-section h2 {
+                font-size: 2.5rem;
+            }
+            .cta-final-section p {
+                font-size: 1rem;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="nav-logo">Senderos de Raza</a>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#productos">Comprá acá</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Sabor Auténtico. Calidad Inigualable.</h1>
+            <p>La tradición y excelencia en Carnes, reinventada para tu mesa.</p>
+            <a href="#productos" class="cta-button">Explorar Productos Premium</a>
+        </div>
+    </section>
+
+    
+    
+    
+
+    <section class="section products-section" id="productos">
+        <div class="container">
+            <!--<h2 class="section-title">Nuestra Selección Premium</h2>-->
+            <p class="section-subtitle">
+                Descubre la variedad y calidad inigualable de nuestros cortes, embutidos y especialidades.
+            </p>
+            <div class="product-grid">
+                
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-carne-vacuna.png" alt="Costillar Premium">
+                    </div>
+                    <div class="product-info">
+                        <h3>Carne vacuna</h3>
+                        
+                        
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-carne-cerdo.png" alt="Lomo Fino">
+                    </div>
+                    <div class="product-info">
+                        <h3>Carne de cerdo</h3>
+                        
+                       
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-carne-blanca.png" alt="Vacío Premium">
+                    </div>
+                    <div class="product-info">
+                        <h3>Carne Blanca</h3>
+                        
+                       
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-menudencia.png" alt="Chorizo Criollo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Menudencias</h3>
+                       
+                       
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-embutidos.png" alt="Costillar Premium">
+                    </div>
+                    <div class="product-info">
+                        <h3>Embutidos</h3>
+                        
+                        
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-pescado.jpg" alt="Lomo Fino">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pescado</h3>
+                       
+                       
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-especiales.png" alt="Vacío Premium">
+                    </div>
+                    <div class="product-info">
+                        <h3>Especiales</h3>
+                       
+                       
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+                
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-varios.png" alt="Chorizo Criollo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Varios</h3>
+                        
+                       
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-image-wrapper">
+                        <img src="https://senderosderaza.com.ar/img/seccion-packs.png" alt="Chorizo Criollo">
+                    </div>
+                    <div class="product-info">
+                        <h3>Packs</h3>
+                        
+                       
+                        <a href="#contacto" class="product-button">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final-section" id="contacto">
+        <div class="container">
+            <h2>¿Listo para la Excelencia Culinaria?</h2>
+            <p>Ingresá a la tienda para realizar tu pedido o para conocer más productos y cortes especiales.</p>
+            <a href="https://wa.me/tunumerodetelefono" target="_blank" class="cta-button">¡Hacer un Pedido Ahora!</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">Senderos de Raza</div>
+            <ul class="footer-links">
+                <li><a href="#nosotros">Sobre Nosotros</a></li>
+                <li><a href="#productos">Nuestros Productos</a></li>
+                <li><a href="#">Política de Privacidad</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://instagram.com/tu_usuario_instagram" target="_blank">Instagram</a> 
+                <a href="https://facebook.com/tu_usuario_facebook" target="_blank">Facebook</a>
+                <a href="https://wa.me/tunumerodetelefono" target="_blank">WhatsApp</a>
+            </div>
+            <div class="footer_map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3102.3970672940245!2d-68.10417613498855!3d-38.960600479560895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sVilla%20la%20Angostura%203068%2C%20CP8300%20Neuqu%C3%A9n!5e0!3m2!1ses-419!2sar!4v1631124531022!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy" class="iframe_map">
+                </iframe>
+            </div>
+            <p>&copy; 2025 Senderos de Raza. Todos los derechos reservados.</p>
+        </div>
+        
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* ****************************************************** */
+            /* INICIALIZACIÓN DE LENIS (SCROLL SUAVE)                 */
+            /* ****************************************************** */
+            
+            const lenis = new Lenis({
+                lerp: 0.1,
+                smoothWheel: true,
+                mediaQuery: "(min-width: 768px)",
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+
+
+            /* ****************************************************** */
+            /* CONEXIÓN DE LENIS CON GSAP SCROLLTRIGGER               */
+            /* ****************************************************** */
+            
+            gsap.registerPlugin(ScrollTrigger);
+            lenis.on('scroll', ScrollTrigger.update);
+            
+
+            /* ****************************************************** */
+            /* ¡NUEVO BLOQUE! EFECTO 4: SCROLL SUAVE EN ANCLAS       */
+            /* ****************************************************** */
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    const href = anchor.getAttribute('href');
+                    
+                    if (href === '#' || href === '') return;
+                    
+                    const targetElement = document.querySelector(href);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        lenis.scrollTo(targetElement, { 
+                            duration: 1.5, // Tu duración (puedes cambiarla)
+                            
+                            // ----- AQUÍ ESTÁ EL CAMBIO -----
+                            // Esta es una curva "easeInOutSine"
+                            // (lento -> rápido -> lento)
+                            easing: (t) => -(Math.cos(Math.PI * t) - 1) / 2
+                        });
+                    }
+                });
+            });
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // --- GSAP Scroll Suave Mejorado ---
+        
+    });
+
+        // --- Animaciones de Entrada (Header y Hero) ---
+        // Estas animaciones ahora animan 'desde' un estado invisible al estado visible default
+        gsap.from(".nav-logo", { duration: 1, opacity: 0, x: -20, ease: "power2.out", delay: 0.5 });
+        gsap.from(".nav-links li", { duration: 0.8, opacity: 0, y: -20, stagger: 0.1, ease: "power2.out", delay: 0.7 });
+
+        gsap.from(".hero h1", { duration: 1.5, opacity: 0, y: 50, ease: "power3.out", delay: 1 });
+        gsap.from(".hero p", { duration: 1.5, opacity: 0, y: 50, ease: "power3.out", delay: 1.2 });
+        gsap.from(".hero .cta-button", { duration: 1.5, opacity: 0, y: 20, ease: "power3.out", delay: 1.4 }); // Corregido selector
+
+        // --- Parallax del Fondo del Hero ---
+        gsap.to(".hero::before", {
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.8 
+            },
+            yPercent: 20,
+            scale: 1.15
+        });
+
+        // --- Animaciones de Entrada al Scroll (Fade-in y Slide) ---
+        const animateOnScroll = (selector, fromVars = {}) => {
+            gsap.utils.toArray(selector).forEach(elem => {
+                gsap.from(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    ...fromVars
+                });
+            });
+        };
+
+        animateOnScroll(".section-title", { y: 30 });
+        animateOnScroll(".section-subtitle", { y: 30, delay: 0.2 });
+
+       
+
+        // Animación de los productos
+        gsap.utils.toArray(".product-item").forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 90%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 50,
+                scale: 0.9,
+                duration: 1,
+                ease: "back.out(1.7)",
+                delay: i * 0.1 
+            });
+        });
+        
+        // Animación del CTA final
+        gsap.from(".cta-final-section h2", {
+            scrollTrigger: { trigger: ".cta-final-section", start: "top 75%", toggleActions: "play none none none" },
+            opacity: 0, y: 30, duration: 1, ease: "power2.out"
+        });
+        gsap.from(".cta-final-section p", {
+            scrollTrigger: { trigger: ".cta-final-section", start: "top 75%", toggleActions: "play none none none" },
+            opacity: 0, y: 30, duration: 1, delay: 0.2, ease: "power2.out"
+        });
+        gsap.from(".cta-final-section .cta-button", {
+            scrollTrigger: { trigger: ".cta-final-section", start: "top 75%", toggleActions: "play none none none" },
+            opacity: 0, y: 30, duration: 1, delay: 0.4, ease: "power2.out"
+        });
+
+    </script>
+</body>
+</html>
